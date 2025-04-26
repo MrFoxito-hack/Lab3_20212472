@@ -21,6 +21,8 @@ public class Paciente {
     private Date fechaCita;
     private int numeroHabitacion;
 
+    //se debe indicar:
+    //@ManyToOne (visto en la ppt)
     // Relacionamos con Doctor
     @ManyToOne
     @JoinColumn(name = "doctor_id")
@@ -108,3 +110,5 @@ public class Paciente {
         this.hospital = hospital;
     }
 }
+
+
