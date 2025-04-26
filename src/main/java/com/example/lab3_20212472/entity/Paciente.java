@@ -35,8 +35,6 @@ public class Paciente {
 
 
 
-
-
     // G and S
     public int getId() {
         return id;

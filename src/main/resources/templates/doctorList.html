@@ -1,0 +1,25 @@
+<!-- src/main/resources/templates/doctorList.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctores del Hospital</title>
+</head>
+<body>
+<h1>Doctores del Hospital</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Nombre</th>
+        <th>Especialidad</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="doctor : ${doctores}">
+        <td th:text="${doctor.nombre}"></td>
+        <td th:text="${doctor.especialidad}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

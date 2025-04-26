@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Hospitales</title>
+</head>
+<body>
+<h1>Lista de Hospitales</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Nombre</th>
+    <th>Dirección</th>
+    <th>Teléfono</th>
+    <th>Acciones</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="hospital : ${hospitales}">
+    <td th:text="${hospital.nombre}"></td>
+    <td th:text="${hospital.direccion}"></td>
+    <td th:text="${hospital.telefono}"></td>
+    <td>
+      <a th:href="@{'/doctores/' + ${hospital.id}}">Mostrar doctores</a>
+      <a th:href="@{'/pacientes/' + ${hospital.id}}">Mostrar pacientes</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
