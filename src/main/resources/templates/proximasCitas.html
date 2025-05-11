@@ -4,28 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Próximas Citas</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
-<h1>Próximas Citas</h1>
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Próximas Citas</h1>
 
-<table class="table">
-  <thead>
-  <tr>
-    <th>Nombre del Paciente</th>
-    <th>Fecha de Cita</th>
-    <th>Hora de Cita</th>
-  </tr>
-  </thead>
-  <tbody>
-  <!-- Iterar sobre los pacientes y mostrar las citas -->
-  <tr th:each="paciente : ${pacientes}">
-    <td th:text="${paciente.nombre}">Nombre del Paciente</td>
-    <!-- Aquí se formatea la fecha LocalDate -->
-    <td th:text="${#temporals.format(paciente.fechaCita, 'yyyy-MM-dd')}">Fecha de Cita</td>
-  </tr>
-  </tbody>
-</table>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Nombre del Paciente</th>
+      <th>Fecha de Cita</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="paciente : ${pacientes}">
+      <td th:text="${paciente.nombre}">Nombre del Paciente</td>
+      <td th:text="${#temporals.format(paciente.fechaCita, 'yyyy-MM-dd')}">Fecha de Cita</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>
