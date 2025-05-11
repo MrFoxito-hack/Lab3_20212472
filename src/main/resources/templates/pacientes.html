@@ -3,20 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pacientes</title>
+  <title>Lista de Pacientes</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<!-- Incluir el navbar -->
+
+<!-- Navbar -->
 <div th:replace="~{navbar.html}"></div>
 
-<h1>Lista de Pacientes</h1>
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Lista de Pacientes</h1>
 
-<ul>
-  <!-- Mostrar la lista de pacientes -->
-  <li th:each="paciente : ${pacientes}">
-    <span th:text="${paciente.nombre}">Nombre del Paciente</span> -
-    <span th:text="${paciente.diagnostico}">Diagnóstico</span>
-  </li>
-</ul>
+  <ul class="list-group">
+    <!-- Mostrar la lista de pacientes -->
+    <li th:each="paciente : ${pacientes}" class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <strong th:text="${paciente.nombre}">Nombre del Paciente</strong> -
+        <span class="text-muted" th:text="${paciente.diagnostico}">Diagnóstico</span>
+      </div>
+      <div>
+        <span th:text="${paciente.hospital.nombre}">Hospital</span> -
+        <span th:text="${paciente.doctor.nombre}">Doctor</span>
+      </div>
+      <div>
+        <!-- Botón para redirigir a formulario de derivación -->
+        <a th:href="@{'/derivarPaciente/' + ${paciente.id}}" class="btn btn-warning btn-sm">Derivar Paciente</a>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>

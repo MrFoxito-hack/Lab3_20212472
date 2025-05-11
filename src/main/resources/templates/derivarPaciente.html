@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Derivar Paciente</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navbar -->
+<div th:replace="~{navbar.html}"></div>
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h1 class="text-center">Derivar Paciente</h1>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-info">
+                <h4>Paciente: <span th:text="${paciente.nombre}"></span></h4>
+                <p>Doctor actual: <span th:text="${paciente.doctor.nombre}"></span></p>
+            </div>
+
+            <form th:action="@{'/derivarPaciente/' + ${paciente.id}}" method="POST">
+                <input type="hidden" name="doctorOrigen" th:value="${paciente.doctor.id}">
+
+                <div class="form-group">
+                    <label for="doctorDestino">Seleccione nuevo doctor:</label>
+                    <select name="doctorDestino" id="doctorDestino" class="form-control" required>
+                        <option value="">-- Seleccione doctor --</option>
+                        <option th:each="doctor : ${doctores}"
+                                th:if="${doctor.id != paciente.doctor.id}"
+                                th:value="${doctor.id}"
+                                th:text="${doctor.nombre}">
+                        </option>
+                    </select>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary">Confirmar Derivación</button>
+                    <a th:href="@{/pacientes}" class="btn btn-secondary ml-2">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
