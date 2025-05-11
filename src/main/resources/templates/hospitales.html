@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospitales</title>
+</head>
+<body>
+<!-- Incluir el navbar -->
+<div th:replace="~{navbar.html}"></div>
+
+<h1>Lista de Hospitales</h1>
+
+<ul>
+    <!-- Mostrar la lista de hospitales -->
+    <li th:each="hospital : ${hospitales}">
+        <span th:text="${hospital.nombre}">Nombre del Hospital</span> -
+        <span th:text="${hospital.direccion}">Dirección</span>
+    </li>
+</ul>
+</body>
+</html>
