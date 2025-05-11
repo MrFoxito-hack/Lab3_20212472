@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Próximas Citas</title>
+</head>
+<body>
+
+<h1>Próximas Citas</h1>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Nombre del Paciente</th>
+    <th>Fecha de Cita</th>
+    <th>Hora de Cita</th>
+  </tr>
+  </thead>
+  <tbody>
+  <!-- Iterar sobre los pacientes y mostrar las citas -->
+  <tr th:each="paciente : ${pacientes}">
+    <td th:text="${paciente.nombre}">Nombre del Paciente</td>
+    <!-- Aquí se formatea la fecha LocalDate -->
+    <td th:text="${#temporals.format(paciente.fechaCita, 'yyyy-MM-dd')}">Fecha de Cita</td>
+  </tr>
+  </tbody>
+</table>
+
+</body>
+</html>

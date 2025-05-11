@@ -1,8 +1,6 @@
 package com.example.lab3_20212472.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import java.time.LocalDate;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,7 +17,10 @@ public class Paciente {
     private int edad;
     private String genero;
     private String diagnostico;
-    private LocalDate fechaCita;
+
+    @Column(name = "fecha_cita")
+    private LocalDate fechaCita; // Asegúrate de usar LocalDate para almacenar solo la fecha
+
     private int numeroHabitacion;
 
     @ManyToOne
