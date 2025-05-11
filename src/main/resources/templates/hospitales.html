@@ -4,19 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hospitales</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<!-- Incluir el navbar -->
+
 <div th:replace="~{navbar.html}"></div>
 
-<h1>Lista de Hospitales</h1>
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Lista de Hospitales</h1>
 
-<ul>
-    <!-- Mostrar la lista de hospitales -->
-    <li th:each="hospital : ${hospitales}">
-        <span th:text="${hospital.nombre}">Nombre del Hospital</span> -
-        <span th:text="${hospital.direccion}">Dirección</span>
-    </li>
-</ul>
+    <ul class="list-group">
+        <li th:each="hospital : ${hospitales}" class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+                <strong th:text="${hospital.nombre}">Nombre del Hospital</strong> -
+                <span class="text-muted" th:text="${hospital.direccion}">Dirección</span>
+            </div>
+            <div>
+                <!-- Botón para mostrar doctores -->
+                <a th:href="@{'/mostrarDoctores/' + ${hospital.id}}" class="btn btn-info btn-sm mr-2">Mostrar Doctores</a>
+                <!-- Botón para mostrar pacientes -->
+                <a th:href="@{'/mostrarPacientes/' + ${hospital.id}}" class="btn btn-success btn-sm">Mostrar Pacientes</a>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>
