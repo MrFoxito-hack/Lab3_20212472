@@ -1,10 +1,13 @@
 package com.example.lab3_20212472.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
+
 @Getter
 @Setter
 public class Doctor {
@@ -19,4 +22,6 @@ public class Doctor {
     @ManyToOne
     @JoinColumn(name = "hospital_id")
     private Hospital hospital;
+
+    public Doctor() {}
 }

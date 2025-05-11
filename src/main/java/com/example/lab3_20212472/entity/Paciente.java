@@ -1,6 +1,8 @@
 package com.example.lab3_20212472.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import java.time.LocalDate;
 import lombok.Getter;
 import lombok.Setter;
